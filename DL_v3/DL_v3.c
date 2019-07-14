@@ -1,10 +1,10 @@
 /*
  * DL_v3.c
- *
- * Created: 12/24/2015 8:35:35 AM
- *  Author: Amirhosein
- */ 
-
+ * Software License Agreement (GPLv3 License)
+ * Copyright (c) 2019, Amirhossein Pakdaman.
+ * Created: 12/24/2015
+ * Author: Amirhossein Pakdaman.
+ */
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -151,5 +151,5 @@ int main(void)
 			_delay_ms(10);
 		}
 	}
-	
+
 }
