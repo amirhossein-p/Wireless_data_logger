@@ -1,10 +1,10 @@
 /*
  * TR_v3.c
- *
- * Created: 12/24/2015 8:37:55 AM
- *  Author: Amirhosein
- */ 
-
+ * Software License Agreement (GPLv3 License)
+ * Copyright (c) 2019, Amirhossein Pakdaman.
+ * Created: 12/24/2015
+ * Author: Amirhossein Pakdaman.
+ */
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -97,7 +97,7 @@ unsigned int fnc = 1;		// MicroSD File Name Counter
 unsigned int mfs = 0;		// MicroSD Make File Start - PC.5 Holder
 unsigned int mfe = 0;		// MicroSD Make File End
 //char da1[13];				// Data To MicroSD Part1	{'1' , 0x09 , '2' , 0x0D , 0x0A}
-char da1[23];				// Data To MicroSD 
+char da1[23];				// Data To MicroSD
 //char da2[11];				// Data To MicroSD Part2
 char dscc[4];				// MicroSD Data String Counter Char
 unsigned int dsc = 0;		// MicroSD Data String Counter
@@ -158,7 +158,7 @@ void usartsnd (void)
 	{
 		disp1 = ((dly << 4) | (rsid << 3) | (fin << 2) | (onid << 1) | ofak);
 		disp2 = ((pg << 4) | tots);
-		dsc1 = (dsc & 0xFF); 	
+		dsc1 = (dsc & 0xFF);
 		dsc2 = ((errs << 7) | (mems << 6) | (dsc >> 8));
 		//batss = ((bat - 222) / 4);
 		UDR = 'C';
@@ -186,19 +186,19 @@ void usartsnd (void)
 		UDR = disp1;
 		_delay_ms(1);
 		UDR = disp2;
-		_delay_ms(1); 
+		_delay_ms(1);
 		UDR = fnc;
 		_delay_ms(1);
-		UDR = sdrsp; 
+		UDR = sdrsp;
 		_delay_ms(1);
-		UDR = dsc2;  
+		UDR = dsc2;
 		_delay_ms(1);
-		UDR = dsc1; 
+		UDR = dsc1;
 		_delay_ms(1);
 		UDR = 'D';
 		_delay_ms(1);
 		rsid = 0;
-		usrv = sd_usrcv(); 
+		usrv = sd_usrcv();
 	}
 	else _delay_ms(15);
 }
@@ -260,7 +260,7 @@ void selsgn(void)
 	lcd_data(0x00);
 	lcd_command(0x8A);
 	lcd_data(0x02);
-	
+
 	lcd_command(0x58);
 	lcd_data(0x00);
 	lcd_data(0x00);
@@ -289,7 +289,7 @@ void batsgn(void)
 	if (bats > 0) lcd_data(0x1D); else lcd_data(0x1C);
 	lcd_command(0xDF);
 	lcd_data(0x04);
-	
+
 }
 void rsdsgn(void)
 {
@@ -404,44 +404,44 @@ void msddata(void)
 	if (tmp2[4] == ' ') tmp2[4] = '0';
 	if (tmp2[5] == ' ') tmp2[5] = '0';
 	if (tmp2[6] == ' ') tmp2[6] = '0';
-	if (tmp2[7] == ' ') tmp2[7] = '0';	
+	if (tmp2[7] == ' ') tmp2[7] = '0';
 	if (dlst == 1)
 	{
 		itoa(dsc,dscc,10);
 		/*da1[0] = dscc[0]; da1[1] = dscc[1]; da1[2] = dscc[2]; da1[3] = dscc[3];
-		da1[4] = 0x09; 
-		da1[5]  = tmp1[0];     da1[6]  = tmp1[1]; da1[7]  = tmp1[2];     da1[8]  = tmp1[3];      da1[9]  = tmp1[4]; da1[10]  = tmp1[5]; da1[11]  = tmp1[6]; da1[12]  = tmp1[7]; 
-		da2[0] = 0x09;		
-		da2[1]  = tmp2[0];     da2[2]  = tmp2[1]; da2[3]  = tmp2[2];     da2[4]  = tmp2[3];      da2[5]  = tmp2[4]; da2[6]   = tmp2[5]; da2[7]   = tmp2[6]; da2[8]   = tmp2[7];	
-		da2[9] = 0x0D; da2[10] = 0x0A;*/	
-		
-		da1[0]  = dscc[0]; 
-		da1[1]  = dscc[1]; 
-		da1[2]  = dscc[2]; 
+		da1[4] = 0x09;
+		da1[5]  = tmp1[0];     da1[6]  = tmp1[1]; da1[7]  = tmp1[2];     da1[8]  = tmp1[3];      da1[9]  = tmp1[4]; da1[10]  = tmp1[5]; da1[11]  = tmp1[6]; da1[12]  = tmp1[7];
+		da2[0] = 0x09;
+		da2[1]  = tmp2[0];     da2[2]  = tmp2[1]; da2[3]  = tmp2[2];     da2[4]  = tmp2[3];      da2[5]  = tmp2[4]; da2[6]   = tmp2[5]; da2[7]   = tmp2[6]; da2[8]   = tmp2[7];
+		da2[9] = 0x0D; da2[10] = 0x0A;*/
+
+		da1[0]  = dscc[0];
+		da1[1]  = dscc[1];
+		da1[2]  = dscc[2];
 		da1[3]  = dscc[3];
 		da1[4]  = 0x09;
-		da1[5]  = tmp1[0];     
-		da1[6]  = tmp1[1]; 
-		da1[7]  = tmp1[2];     
-		da1[8]  = tmp1[3];      
-		da1[9]  = tmp1[4]; 
-		da1[10] = tmp1[5]; 
-		da1[11] = tmp1[6]; 
+		da1[5]  = tmp1[0];
+		da1[6]  = tmp1[1];
+		da1[7]  = tmp1[2];
+		da1[8]  = tmp1[3];
+		da1[9]  = tmp1[4];
+		da1[10] = tmp1[5];
+		da1[11] = tmp1[6];
 		da1[12] = tmp1[7];
 		da1[13] = 0x09;
 		da1[14] = tmp2[0];
 		da1[15] = tmp2[0];
-		da1[16] = tmp2[1]; 
-		da1[17] = tmp2[2];     
-		da1[18] = tmp2[3];      
-		da1[19] = tmp2[4]; 
-		da1[20] = tmp2[5]; 
-		da1[21] = tmp2[6]; 
+		da1[16] = tmp2[1];
+		da1[17] = tmp2[2];
+		da1[18] = tmp2[3];
+		da1[19] = tmp2[4];
+		da1[20] = tmp2[5];
+		da1[21] = tmp2[6];
 		da1[22] = tmp2[7];
-		//da1[23] = 0x0D; 
+		//da1[23] = 0x0D;
 		//da1[24] = 0x0A;
-		
-		
+
+
 		plc_disable; msd_enable;
 		_delay_ms(50);
 		if (mfe == 1)
@@ -453,18 +453,18 @@ void msddata(void)
 			if (sdrsp == 0)
 			{
 				/*sd_append(13 , da1);
-				_delay_ms(50);	
+				_delay_ms(50);
 				sdrsp = sd_response();
 				_delay_ms(50);
 				sd_append(11 , da2);
 				_delay_ms(100);
 				sdrsp = sd_response();
 				_delay_ms(50);*/
-				
+
 				sd_append(23 , da1);
 				_delay_ms(50);
 				sdrsp = sd_response();
-				_delay_ms(50);					
+				_delay_ms(50);
 			}
 		}
 		plc_enable; msd_disable;
@@ -480,17 +480,17 @@ void interface (void)
 		lcd_home();
 		lcd_puts("Run         Sett");
 		lcd_gotoxy(5,2);
-		lcd_puts("WDL v3");	
+		lcd_puts("WDL v3");
 			//lcd_gotoxy(0,3);
 			//lcd_puts(ch1);
 			//lcd_gotoxy(4,3);
-			//lcd_puts(ch2);	
+			//lcd_puts(ch2);
 			//lcd_gotoxy(8,3);
 			//lcd_puts(dscc);
 		if (onid == 1) runsgn(2);
 		if (ofak == 1) runsgn(1);
-		if ((PINA & (1<<0)) || (usrv == 1)) {pg = 2; usrv = 0; _delay_ms(pdly);}  
-		_delay_ms(100);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+		if ((PINA & (1<<0)) || (usrv == 1)) {pg = 2; usrv = 0; _delay_ms(pdly);}
+		_delay_ms(100);
 	}
 	if (pg == 1)									// Run
 	{
@@ -500,13 +500,13 @@ void interface (void)
 		lcd_gotoxy(0,1);
 		lcd_puts("T1:");
 		lcd_gotoxy(3,1);
-		lcd_puts(tmp1);		// String in msddata				
-		lcd_gotoxy(0,2);							
+		lcd_puts(tmp1);		// String in msddata
+		lcd_gotoxy(0,2);
 		lcd_puts("T2:");
 		lcd_gotoxy(3,2);
 		lcd_puts(tmp2);		// String in msddata
-		if (dlst == 1) {lcd_gotoxy(8,3); lcd_puts(dscc);}	
-		if (dlst == 0) {lcd_gotoxy(8,3); lcd_puts("    "); mems = 0;}	
+		if (dlst == 1) {lcd_gotoxy(8,3); lcd_puts(dscc);}
+		if (dlst == 0) {lcd_gotoxy(8,3); lcd_puts("    "); mems = 0;}
 		batsgn();
 		//itoa(bat,ch1,10); lcd_gotoxy(11,3); lcd_puts(ch1);
 		if (onid == 1) runsgn(2);
@@ -515,8 +515,8 @@ void interface (void)
 		if (((PINA & (1<<0)) && (fin == 0) && (pt3 == 0)) || ((usrv == 1) && (fin == 0) && (pt3 == 0)))	{fin = 1; pt3 = 1; fcs1 = 1; usrv = 0; _delay_ms(10);}
 		if (((PINA & (1<<0)) == 0)/* || ((pt3 == 1) && (usrv == 0))*/) pt3 = 0;
 		if (((PINA & (1<<0)) && (fin == 1) && (pt3 == 0)) || ((usrv == 1) && (fin == 1) && (pt3 == 0)))	{fin = 0; pt3 = 1; fcs1 = 1; usrv = 0; _delay_ms(10);}
-		if (((PINA & (1<<0)) == 0)/* || ((pt3 == 1) && (usrv == 0))*/) pt3 = 0;						
-		if (fin == 1) ledsgn();		
+		if (((PINA & (1<<0)) == 0)/* || ((pt3 == 1) && (usrv == 0))*/) pt3 = 0;
+		if (fin == 1) ledsgn();
 		if (dlst == 1) {entmemsgn(); mems = 1;}
 		_delay_ms(100);
 	}
@@ -573,7 +573,7 @@ void interface (void)
 				if ((PINA & (1<<3)) && (eiac != 1) && (pt4 == 0))	{eeprom_write_byte(&eeiac, 1); pt4 = 1;}
 				if ((PINA & (1<<3)) == 0) pt4 = 0;
 				if ((PINA & (1<<3)) && (eiac == 1) && (pt4 == 0))	{eeprom_write_byte(&eeiac, 0); pt4 = 1;}
-				if ((PINA & (1<<3)) == 0) pt4 = 0;	
+				if ((PINA & (1<<3)) == 0) pt4 = 0;
 			}
 			if (pt1 == 4)
 			{
@@ -694,12 +694,12 @@ void interface (void)
 		if (ofak == 1) runsgn(1);
 		if (ofid == 1) {rsdsgn(); onid = 0; runsgn(0);}
 		if (dlst == 1) {entmemsgn(); mems = 1;}
-		if (dlst == 0) mems = 0;	
+		if (dlst == 0) mems = 0;
 		_delay_ms(100);
 		ofid = 0;
 		if (ofid == 0) {lcd_gotoxy(14,3); lcd_puts(" ");}
 		if ((PINA & (1<<0)) || (usrv == 1)) {pg = 0; usrv = 0; _delay_ms(pdly);}
-			
+
 		if (((PINA & (1<<2)) && (dlac != 1) && (dlst == 0) && (pt6 == 0)) || ((usrv == 3) && (dlst == 0) && (pt6 == 0)))	{dlst = 1; pt6 = 1; usrv = 0; erak = 0; msdfile(); _delay_ms(pdly);}
 		if (((PINA & (1<<2)) == 0)  && (dlac != 1)) pt6 = 0;
 		if (((PINA & (1<<2)) && (dlac != 1) && (dlst == 1) && (pt6 == 0)) || ((usrv == 3) && (dlst == 1) && (pt6 == 0)))	{dlst = 0; pt6 = 1; usrv = 0; fnc = 1;   _delay_ms(pdly);}
@@ -744,7 +744,7 @@ void interface (void)
 		if (onid == 1) runsgn(2);
 		if (ofak == 1) runsgn(1);
 		if (ofid == 1) {rsdsgn(); onid = 0; runsgn(0);}
-		_delay_ms(100);	
+		_delay_ms(100);
 		//onst = 0;
 		dlst = 0;
 		if ((PINA & (1<<0)) || (usrv == 1)) {usrv = 0; erak = 1; dsc = 0; cnex = 0; pg = 0; _delay_ms(pdly);}
@@ -765,7 +765,7 @@ void interface (void)
 				sd_rset;
 				_delay_ms(200);
 				sd_set;
-			}				
+			}
 			if ((onhl == 1) && (cnte > 20))							// Auto Reset
 			{
 				sd_rset;
@@ -815,8 +815,8 @@ int main(void)
 	_delay_ms(100);
 	PORTA &= ~(1<<6);
 	PORTA &= ~(1<<7);
-	sd_init();	
-	plc_enable; 
+	sd_init();
+	plc_enable;
 	msd_disable;
 	while(1)
 	{
@@ -827,25 +827,25 @@ int main(void)
 		usartsnd();													// Write Data to USART & 15ms Delay
 		if (rcve == 1)												// Receive...
 		{
-			//usartsnd();												// Write Data to USART									
+			//usartsnd();												// Write Data to USART
 			if ((bufi[1] == 'A') &&  (bufi[10] == 'B'))				// Receive & Decode Data
 			{
 				cnt1 = 0;
 				onid = 1;
-				r11 = bufi[2]; 
+				r11 = bufi[2];
 				r12 = bufi[3];
 				r13 = bufi[4];
 				bat = bufi[5];
 				r21 = bufi[6];
 				r22 = bufi[7];
 				r23 = bufi[8];
-				id  = bufi[9];							
+				id  = bufi[9];
 				sgn1 = (r11 >> 7);
 				dig1 = (r11 & 0b1111111);
-				dec1 = ((r12 << 8) | r13);				
+				dec1 = ((r12 << 8) | r13);
 				sgn2 = (r21 >> 7);
 				dig2 = (r21 & 0b1111111);
-				dec2 = ((r22 << 8) | r23);	
+				dec2 = ((r22 << 8) | r23);
 				sgn1u = sgn1;
 				dig1u = dig1;
 				r12u  = r12;
@@ -855,7 +855,7 @@ int main(void)
 				r22u  = r22;
 				r23u  =	r23;
 				dec1u = dec1;
-				dec2u = dec2;	
+				dec2u = dec2;
 				rcve = 0;
 				if (onst == 1) msddata();
 			}
@@ -948,12 +948,12 @@ int main(void)
 		if ( ((dlac != 1) && sd_err && (erak == 0)) ||
 		     ((dlac != 1) && (cnex == 1))            )							// MicroSD Error
 		{
-			pg = 7;	
-			errs = 1;					
+			pg = 7;
+			errs = 1;
 			//if (onst == 1) mehl = 1;
 		}
 		if (sd_err == 0) errs = 0;
 		if (dsc > 9998) cnex = 1;												// MicroSD Counter Exceeded
 	}
-	
+
 }
