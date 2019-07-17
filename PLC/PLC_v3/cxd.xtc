@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cxdconfig showonstatus="false" magnification="200" screentableexpand="true" displaycategorymode="false" currenthostkey="1">
+	<lastopenedforms>
+		<lastopenedform index="0" type="screen">
+		</lastopenedform>
+	</lastopenedforms>
+	<categorylist expand="true">
+		<item id="0000">
+		</item>
+	</categorylist>
+	<useasdefault>
+		<defaultform width="320" height="240" popupwidth="280" popupheight="200">
+		</defaultform>
+	</useasdefault>
+	<toolversion major="2" minor="1">
+	</toolversion>
+	<searchconfig>
+		<historygrouptable>
+			<historygroup name="0">
+				<history index="0" data="d20">
+				</history>
+			</historygroup>
+		</historygrouptable>
+	</searchconfig>
+</cxdconfig>
